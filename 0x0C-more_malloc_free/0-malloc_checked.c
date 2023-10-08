@@ -1,21 +1,22 @@
-#include <stdlib.h>
+#include "main.h"
 
 /**
- * allocate_memory - Allocates memory using malloc and checks for errors.
- * @size: Size of memory to be allocated.
+ * malloc_checked - allocates memory using malloc.
  *
- * Returns:
- *  - A pointer to the allocated memory.
- *  - If malloc fails, the program exits with an error code.
+ * @size: the size of the space to allcate.
+ *
+ * Return: pointer to the allocated memory
  */
-void *allocate_memory(unsigned int size)
+void *malloc_checked(unsigned int size)
 {
-	void *memory_ptr = malloc(size);
+	void *ptr;
 
-	if (memory_ptr == NULL)
-	{
+	if (size <= 0)
 		exit(98);
-	}
 
-	return (memory_ptr);
+	ptr = malloc(size);
+	if (!ptr)
+		exit(98);
+	else
+		return (ptr);
 }
